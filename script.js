@@ -1,3 +1,32 @@
+// const buttons = document.querySelectorAll("button");
+
+// buttons.forEach((button) => {
+//   button.addEventListener("click", playRound(button.id, computerPlay()));
+// });
+
+// const buttons = document.querySelectorAll("button");
+
+// buttons.forEach(button => {
+//   addEventListener("click", function(){
+//     playRoundUpdated(button.id, computerPlay());
+//   });
+// });
+
+const rockButton = document.getElementById("rock");
+rockButton.addEventListener("click", function () {
+  playRoundUpdated(rockButton.id, computerPlay());
+});
+
+const paperButton = document.getElementById("paper");
+paperButton.addEventListener("click", function () {
+  playRoundUpdated(paperButton.id, computerPlay());
+});
+
+const scissorsButton = document.getElementById("scissors");
+scissorsButton.addEventListener("click", function () {
+  playRoundUpdated(scissorsButton.id, computerPlay());
+});
+
 function computerPlay() {
   let randomNo = Math.floor(Math.random() * 3);
 
@@ -105,45 +134,45 @@ function getResult() {
   console.log(result);
 }
 
-function returnFive() {
-  return "five";
-}
+// function returnFive() {
+//   return "five";
+// }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+// function game() {
+//   let playerScore = 0;
+//   let computerScore = 0;
 
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt();
-    const computerSelection = computerPlay();
+//   for (let i = 0; i < 5; i++) {
+//     const playerSelection = prompt();
+//     const computerSelection = computerPlay();
 
-    console.log(
-      "You draw " +
-        playerSelection +
-        " and the computer draws " +
-        computerSelection
-    );
+//     console.log(
+//       "You draw " +
+//         playerSelection +
+//         " and the computer draws " +
+//         computerSelection
+//     );
 
-    let result = playRoundUpdated(playerSelection, computerSelection);
+//     let result = playRoundUpdated(playerSelection, computerSelection);
 
-    // player wins
-    if (result === 2) {
-      playerScore = playerScore + 1;
-    }
+//     // player wins
+//     if (result === 2) {
+//       playerScore = playerScore + 1;
+//     }
 
-    if (result === 0) {
-      computerScore = computerScore + 1;
-    }
-  }
+//     if (result === 0) {
+//       computerScore = computerScore + 1;
+//     }
+//   }
 
-  if (playerScore > computerScore) {
-    return "You win!";
-  }
+//   if (playerScore > computerScore) {
+//     return "You win!";
+//   }
 
-  if (computerScore > playerScore) {
-    return "You lose!";
-  }
-  if (playerScore === computerScore) {
-    return "It's a draw!";
-  }
-}
+//   if (computerScore > playerScore) {
+//     return "You lose!";
+//   }
+//   if (playerScore === computerScore) {
+//     return "It's a draw!";
+//   }
+// }
