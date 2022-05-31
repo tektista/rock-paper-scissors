@@ -1,31 +1,67 @@
-// const buttons = document.querySelectorAll("button");
-
-// buttons.forEach((button) => {
-//   button.addEventListener("click", playRound(button.id, computerPlay()));
-// });
-
-// const buttons = document.querySelectorAll("button");
-
-// buttons.forEach(button => {
-//   addEventListener("click", function(){
-//     playRoundUpdated(button.id, computerPlay());
-//   });
-// });
-
 const rockButton = document.getElementById("rock");
 rockButton.addEventListener("click", function () {
-  playRoundUpdated(rockButton.id, computerPlay());
+  displayResult(playRound(rockButton.id, computerPlay()));
 });
 
 const paperButton = document.getElementById("paper");
 paperButton.addEventListener("click", function () {
-  playRoundUpdated(paperButton.id, computerPlay());
+  displayResult(playRound(paperButton.id, computerPlay()));
 });
 
 const scissorsButton = document.getElementById("scissors");
 scissorsButton.addEventListener("click", function () {
-  playRoundUpdated(scissorsButton.id, computerPlay());
+  displayResult(playRound(scissorsButton.id, computerPlay()));
 });
+
+function displayResult(result) {
+  const playerScore = document.getElementById("playerScore");
+
+  const computerScore = document.getElementById("computerScore");
+
+  let pScore = playerScore.innerHTML;
+  let cScore = computerScore.innerHTML;
+
+  // if (pScore == 5) {
+  //   p.textContent = "Player wins";
+
+  //   prompt("Do you want to play again?");
+  // }
+
+  // if (cScore == 5) {
+  //   p.textContent = "Computer wins";
+
+  //   prompt();
+  // }
+
+  //display result
+  const resultDiv = document.querySelector(".result");
+  const p = document.querySelector(".result-p");
+  p.textContent = result[0];
+
+  if (result[1] === 2) {
+    pScore++;
+    document.getElementById("playerScore").innerHTML = pScore;
+  }
+
+  if (result[1] === 0) {
+    cScore++;
+    document.getElementById("computerScore").innerHTML = cScore;
+  }
+
+  if (pScore == 5) {
+    p.textContent = p.textContent + ". THE PLAYER WINS!!!!";
+
+    document.getElementById("playerScore").innerHTML = 0;
+    document.getElementById("computerScore").innerHTML = 0;
+  }
+
+  if (cScore == 5) {
+    p.textContent = p.textContent + ". Computer wins!!!!";
+
+    document.getElementById("playerScore").innerHTML = 0;
+    document.getElementById("computerScore").innerHTML = 0;
+  }
+}
 
 function computerPlay() {
   let randomNo = Math.floor(Math.random() * 3);
@@ -49,35 +85,35 @@ function playRound(playerSelection, computerSelection) {
 
   //   ROCK
   if (playerChoice === "rock" && computerChoice === "rock") {
-    return "It's a draw! Rock draws with Rock";
+    return ["It's a draw! Rock draws with Rock", 1];
   }
   if (playerChoice === "rock" && computerChoice === "scissors") {
-    return "You win! Rock beats Scissors";
+    return ["You win! Rock beats Scissors", 2];
   }
   if (playerChoice === "rock" && computerChoice === "paper") {
-    return "You lose! Paper beats Rock";
+    return ["You lose! Paper beats Rock", 0];
   }
 
   //   PAPER
   if (playerChoice === "paper" && computerChoice === "paper") {
-    return "It's a draw! Paper draws with Paper";
+    return ["It's a draw! Paper draws with Paper", 1];
   }
   if (playerChoice === "paper" && computerChoice === "rock") {
-    return "You win! Paper beats Rock";
+    return ["You win! Paper beats Rock", 2];
   }
   if (playerChoice === "paper" && computerChoice === "scissors") {
-    return "You lose! Scissors beats Paper";
+    return ["You lose! Scissors beats Paper", 0];
   }
 
   //   SCISSORS
   if (playerChoice === "scissors" && computerChoice === "scissors") {
-    return "It's a draw! Scissors draws with Scissors";
+    return ["It's a draw! Scissors draws with Scissors", 1];
   }
   if (playerChoice === "scissors" && computerChoice === "paper") {
-    return "You win! Scissors beatsPaper";
+    return ["You win! Scissors beatsPaper", 2];
   }
   if (playerChoice === "scissors" && computerChoice === "rock") {
-    return "You lose! Rock beats Scissors";
+    return ["You lose! Rock beats Scissors", 0];
   }
 }
 
